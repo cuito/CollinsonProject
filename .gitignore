@@ -1,0 +1,56 @@
+# -----------------------------------------------------------------------------
+# General Node.js / Yarn
+# -----------------------------------------------------------------------------
+node_modules/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.cjs
+.pnp.*
+
+# -----------------------------------------------------------------------------
+# Operating System files
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db 
+ehthumbs.db 
+.vscode/ 
+*.log
+*~
+
+# -----------------------------------------------------------------------------
+# Backend specific (packages/backend)
+# -----------------------------------------------------------------------------
+packages/backend/node_modules/ 
+packages/backend/.env 
+
+# -----------------------------------------------------------------------------
+# Frontend specific (packages/frontend - Vite/React)
+# -----------------------------------------------------------------------------
+packages/frontend/node_modules/ 
+packages/frontend/.env 
+packages/frontend/dist/ 
+packages/frontend/.vite/ 
+packages/frontend/coverage/ 
+.idea/
+
+# -----------------------------------------------------------------------------
+# VS Code specific
+# -----------------------------------------------------------------------------
+.vscode/extensions.json
+.vscode/*.code-workspace
+
+# -----------------------------------------------------------------------------
+# Temporary files
+# -----------------------------------------------------------------------------
+*.tmp
+*.bak
+*.swp
