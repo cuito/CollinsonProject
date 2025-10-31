@@ -4,8 +4,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",         
-    "start": "node dist/index.js", 
+    "build": "tsc",
+    "start": "node dist/index.js",
     "dev": "npx nodemon index.ts"
   },
   "dependencies": {
@@ -15,7 +15,8 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "graphql": "^16.11.0",
-    "graphql-tag": "^2.12.6"
+    "graphql-tag": "^2.12.6",
+    "openmeteo": "^1.2.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
