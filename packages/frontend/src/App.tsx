@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import './App.css'; 
+import './App.css';
+import { request, gql } from 'graphql-request'; // Import for GraphQL requests
 
 function App() {
   const [message, setMessage] = useState<string>('');
@@ -7,30 +8,34 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchMessage = async () => {
+    const fetchGraphQLMessage = async () => {
       try {
-        // Access environment variable with import.meta.env
         const backendUrl = import.meta.env.VITE_BACKEND_URL;
         if (!backendUrl) {
           throw new Error("VITE_BACKEND_URL is not defined in frontend .env");
         }
 
-        const response = await fetch(`${backendUrl}/hello`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setMessage(data.message);
-      } catch (err: any) { 
-        console.error("Failed to fetch message:", err);
+        // Define your GraphQL query
+        const query = gql`
+          query HelloQuery {
+            hello
+          }
+        `;
+
+        // Send the GraphQL query
+        const data: { hello: string } = await request(`${backendUrl}/api`, query);
+        setMessage(data.hello); // Access the 'hello' field from the GraphQL response
+
+      } catch (err: any) {
+        console.error("Failed to fetch GraphQL message:", err);
         setError(err.message || "An unknown error occurred");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchMessage();
-  }, []); 
+    fetchGraphQLMessage();
+  }, []);
 
   if (loading) {
     return <div className="App">Loading...</div>;
@@ -44,7 +49,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Frontend Connected!</h1>
-        <p>Message from Backend: <strong>{message}</strong></p>
+        <p>Message from Backend (GraphQL): <strong>{message}</strong></p>
       </header>
     </div>
   );
