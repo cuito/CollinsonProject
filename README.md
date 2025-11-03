@@ -239,10 +239,8 @@ query RankQuery($latitude: Float!, $longitude: Float!) {
 
 Potential improvements and extensions:
 
-- Add caching layer for weather data to reduce API calls
-- Implement user authentication and saved locations
-- Add more activities to the ranking system
-- Enhanced error handling and retry logic
-- Unit and integration tests
-- Docker containerization for easy deployment
-- CI/CD pipeline setup
+- Add caching layer for weather data to reduce API calls, skipped for now as app is not intended for production.
+- Implement user authentication and saved locations, skipped for now as app is not intended for production.
+- Enhanced error handling and retry logic, skipped to save time.
+- Unit and integration tests, skipped to save time.
+- Docker containerization for easy deployment, skipped as it was not specified as a requirement. 
