@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { request, gql } from 'graphql-request'; // Import for GraphQL requests
+import AddressInput from './components/AddressInput';
 
 function App() {
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [address, setAddress] = useState<string>('');
+  const [coordinates, setCoordinates] = useState<{ lat: number, lng: number } | null>(null);
 
   useEffect(() => {
     const fetchGraphQLMessage = async () => {
@@ -45,11 +48,23 @@ function App() {
     return <div className="App" style={{ color: 'red' }}>Error: {error}</div>;
   }
 
+  const setAddressAndCoordinates = (address: string, coordinates: { lat: number, lng: number }) => {
+    setAddress(address);
+    setCoordinates(coordinates);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Frontend Connected!</h1>
+        <h1>Search for destination</h1>
+        <AddressInput value={address} setParentAddressAndCoordinates={setAddressAndCoordinates} onSelect={() => {}} />
         <p>Message from Backend (GraphQL): <strong>{message}</strong></p>
+        {address && coordinates && (
+          <>
+            <p>Address: <strong>{address}</strong></p>
+            <p>Coordinates: <strong>{coordinates?.lat}, {coordinates?.lng}</strong></p>
+          </>
+        )}
       </header>
     </div>
   );

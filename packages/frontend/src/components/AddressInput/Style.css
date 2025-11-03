@@ -1,0 +1,13 @@
+.suggestion-item {
+  cursor: pointer;
+  padding: 0.5em 0.75em;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+}
+
+.suggestion-item:hover {
+  background-color: #5a5858;
+}
