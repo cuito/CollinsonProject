@@ -16,7 +16,8 @@
     "express": "^5.1.0",
     "graphql": "^16.11.0",
     "graphql-tag": "^2.12.6",
-    "openmeteo": "^1.2.2"
+    "openmeteo": "^1.2.2",
+    "@collinson/types": "1.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
